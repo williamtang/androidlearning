@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class HelloWorldActivity extends AppCompatActivity implements View.OnClickListener {
@@ -12,6 +14,8 @@ public class HelloWorldActivity extends AppCompatActivity implements View.OnClic
 //    private static final String TAG = "HelloWorldActivity";
 
     private EditText editText;
+    private ImageView imageView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,8 @@ public class HelloWorldActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.hello_world_layout);
         Button button = (Button)findViewById(R.id.button);
         editText = (EditText)findViewById(R.id.edit_text);
+        imageView = (ImageView)findViewById(R.id.image_view);
+        progressBar = (ProgressBar)findViewById(R.id.progress_bar);
         button.setOnClickListener(this);
     }
 
@@ -28,6 +34,16 @@ public class HelloWorldActivity extends AppCompatActivity implements View.OnClic
             case R.id.button:
                 String inputText = editText.getText().toString();
                 Toast.makeText(HelloWorldActivity.this, inputText, Toast.LENGTH_SHORT).show();
+
+                // show another image
+                imageView.setImageResource(R.drawable.img_2);
+
+                // progress bar
+                if (progressBar.getVisibility() == View.GONE) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                }
                 break;
             default:
                 break;
